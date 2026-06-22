@@ -1,9 +1,9 @@
 {
   "name": "ppt-icon-studio",
-  "version": "0.1.0+codex.20260622050235",
+  "version": "0.1.0+codex.20260622050600",
   "description": "Use natural language to create PowerPoint-safe custom icons from prompts, themes, or images.",
   "author": {
-    "name": "datamatica"
+    "name": "munkm1109"
   },
   "license": "MIT",
   "keywords": [
@@ -19,7 +19,7 @@
     "displayName": "PPT Icon Studio",
     "shortDescription": "Turn prompts or images into PPT-ready icons.",
     "longDescription": "Automatically handles natural-language requests like converting an attached image into a PowerPoint-style icon, creating editable PPT-safe SVGs, generating color vector SVGs, recreating reference images as slide icons, and exporting high-resolution transparent PNG fallbacks.",
-    "developerName": "datamatica",
+    "developerName": "munkm1109",
     "category": "Design",
     "capabilities": [
       "Design",
