@@ -1,35 +1,41 @@
 # PPT Icon Studio
 
-PPT Icon Studio is a local Codex plugin for creating custom icon assets that behave well in Microsoft PowerPoint.
+PPT Icon Studio is a Codex plugin marketplace containing the `ppt-icon-studio` plugin. The plugin helps Codex create custom icon assets that behave well in Microsoft PowerPoint.
 
 It is built for natural-language requests such as:
 
 - create a set of slide icons from a theme or keyword,
 - convert a reference image into a scalable PowerPoint icon,
-- convert an attached image into a PowerPoint-style icon from natural language,
+- convert an attached image into a PowerPoint-style icon,
 - produce a flat editable SVG icon that can be recolored in slides,
 - produce a high-resolution transparent PNG for 3D or textured icons.
 
-## Install
+## Install As A Codex Plugin
 
-Install from this repository with the Skills CLI:
+Add this GitHub repository as a Codex plugin marketplace:
 
 ```powershell
-npx skills add https://github.com/munkm1109-lang/ppt-icon-studio --skill ppt-icon-studio
+codex plugin marketplace add https://github.com/munkm1109-lang/ppt-icon-studio
 ```
 
-For local Codex plugin development, this repository follows the standard plugin layout:
+Install the plugin from that marketplace:
 
-```text
-.codex-plugin/plugin.json
-skills/ppt-icon-studio/SKILL.md
-skills/ppt-icon-studio/references/
-skills/ppt-icon-studio/scripts/
+```powershell
+codex plugin add ppt-icon-studio@ppt-icon-studio
 ```
 
-## How To Use
+After the repository is updated, refresh and reinstall:
 
-After installing the plugin, use normal prompts. You should not need to paste the `SKILL.md` path.
+```powershell
+codex plugin marketplace upgrade ppt-icon-studio
+codex plugin add ppt-icon-studio@ppt-icon-studio
+```
+
+Start a new Codex thread after installation so the skill is loaded into the session.
+
+## Usage
+
+Use normal prompts. You should not need to paste the `SKILL.md` path.
 
 Examples:
 
@@ -45,11 +51,25 @@ Examples:
 Create five PPT-safe SVG icons for a cybersecurity risk management deck.
 ```
 
-Korean trigger examples:
+## Repository Layout
 
-- `이 이미지를 PPT 기본 아이콘처럼 만들어줘`
-- `파워포인트에서 쓸 단색 SVG 아이콘으로 바꿔줘`
-- `레퍼런스 이미지 기반으로 투명 배경 아이콘 만들어줘`
+```text
+.agents/plugins/marketplace.json
+plugins/ppt-icon-studio/.codex-plugin/plugin.json
+plugins/ppt-icon-studio/skills/ppt-icon-studio/SKILL.md
+plugins/ppt-icon-studio/skills/ppt-icon-studio/references/
+plugins/ppt-icon-studio/skills/ppt-icon-studio/scripts/
+```
+
+## Optional Skill-Only Install
+
+If you only want the skill files without installing the full Codex plugin, you can use the Skills CLI:
+
+```powershell
+npx skills add https://github.com/munkm1109-lang/ppt-icon-studio --skill ppt-icon-studio --full-depth
+```
+
+That is not the same as installing the Codex plugin. For normal Codex plugin use, prefer the `codex plugin marketplace add` flow above.
 
 ## Output Modes
 
@@ -59,41 +79,6 @@ The primary skill chooses one of four strategies:
 2. **Color Vector SVG** for flat multicolor icons where palette preservation matters.
 3. **Reference Reconstruction SVG** for recreating a provided reference image as scalable SVG artwork.
 4. **Complex Transparent Raster** for 3D, textured, photorealistic, or highly detailed icons.
-
-## PPT-Native Icon Profile
-
-The default profile is `ppt-native-icon`:
-
-- square canvas,
-- `viewBox="0 0 512 512"`,
-- transparent background,
-- 10-16% visual padding,
-- simple SVG paths when possible,
-- no text nodes, embedded raster images, external assets, or fragile filters in editable SVG output,
-- transparent PNG/WebP at 1024px or 2048px for complex raster output.
-
-## Dependencies
-
-The guidance works without every optional tool, but output quality improves when these are available:
-
-- Python 3 with Pillow for crop, trace preparation, and alpha checks,
-- `potrace` for monochrome SVG tracing,
-- Node.js with `@neplex/vectorizer` and `sharp` for color SVG vectorization,
-- ImageMagick for measurement and visual diffs,
-- `rsvg-convert` or Sharp for SVG preview rendering,
-- `svgo` for SVG optimization.
-
-The skill reports which checks passed and which were skipped.
-
-## Files
-
-Final assets should be written to the user's requested destination or to:
-
-```text
-tmp/ppt-icon-studio/<request-slug>/
-```
-
-Intermediate files are intentionally preserved for review and iteration.
 
 ## Notes
 
