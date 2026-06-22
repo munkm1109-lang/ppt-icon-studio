@@ -1,0 +1,38 @@
+{
+  "name": "ppt-icon-studio",
+  "version": "0.1.0+codex.20260622050235",
+  "description": "Use natural language to create PowerPoint-safe custom icons from prompts, themes, or images.",
+  "author": {
+    "name": "datamatica"
+  },
+  "license": "MIT",
+  "keywords": [
+    "powerpoint",
+    "pptx",
+    "icons",
+    "svg",
+    "vector",
+    "presentation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PPT Icon Studio",
+    "shortDescription": "Turn prompts or images into PPT-ready icons.",
+    "longDescription": "Automatically handles natural-language requests like converting an attached image into a PowerPoint-style icon, creating editable PPT-safe SVGs, generating color vector SVGs, recreating reference images as slide icons, and exporting high-resolution transparent PNG fallbacks.",
+    "developerName": "datamatica",
+    "category": "Design",
+    "capabilities": [
+      "Design",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/munkm1109-lang/ppt-icon-studio",
+    "privacyPolicyURL": "https://github.com/munkm1109-lang/ppt-icon-studio",
+    "termsOfServiceURL": "https://github.com/munkm1109-lang/ppt-icon-studio/blob/main/NOTICE.md",
+    "defaultPrompt": [
+      "\uc774 \uc774\ubbf8\uc9c0\ub97c PPT \uae30\ubcf8 \uc544\uc774\ucf58\ucc98\ub7fc SVG\ub85c \ub9cc\ub4e4\uc5b4\uc918.",
+      "Create PPT-safe SVG icons from this theme.",
+      "Turn this reference image into a PPT icon."
+    ],
+    "brandColor": "#2F6FED"
+  }
+}
